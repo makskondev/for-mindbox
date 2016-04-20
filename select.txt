@@ -1,0 +1,6 @@
+SELECT  c.CustomerId
+  FROM Product p
+  join Customer c on p.CustomerID = c.CustomerId
+  where p.ProductName = 'Milk' and c.CustomerId not in (SELECT distinct CustomerId
+															FROM Product p															
+										where p.PurchaseDate between DATEADD(m, -1, GETDATE()) AND GETDATE() and p.ProductName = 'SourCream')
