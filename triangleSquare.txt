@@ -1,0 +1,25 @@
+		/// <summary>
+        /// вычислить площадь прямоугольного треугольника по трем сторонам
+        /// </summary>
+        /// <param name="a">сторона a</param>
+        /// <param name="b">сторона b</param>
+        /// <param name="c">сторона c</param>
+        /// <returns>double</returns>
+        public double CalculateRectangularTriangleSquare(float a, float b, float c)
+        {
+            this.SideA = a;
+            this.SideB = b;
+            this.SideC = c;
+            double p = (SideA + SideB + SideC) / 2;
+            return Math.Sqrt(p * (p - SideA) * (p - SideB) * (p - SideC));
+        }
+
+        [TestMethod]
+        public void TriangleSquareBy3sides()
+        {
+            var triangle = new Triangle();
+
+            var res = triangle.CalculateRectangularTriangleSquare(3, 4, 5);
+
+            Assert.AreEqual(6, res);
+        }
